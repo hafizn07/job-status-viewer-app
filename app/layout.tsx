@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import GitHubButton from "@/components/github-button";
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Suspense fallback={<div>Loading...</div>}>
         {children}
         <GitHubButton />
+        </Suspense>
       </body>
     </html>
   );

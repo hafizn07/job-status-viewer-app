@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import JobStatusViewer from "@/components/job-status-viewer";
 import { RoleProvider } from "@/contexts/role-context";
@@ -19,9 +19,11 @@ const JobsDashboardPage = () => {
 
   return (
     <RoleProvider role={role}>
-      <div className="min-h-screen p-6 flex items-center justify-center bg-gray-100">
-        <JobStatusViewer />
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="min-h-screen p-6 flex items-center justify-center bg-gray-100">
+          <JobStatusViewer />
+        </div>
+      </Suspense>
     </RoleProvider>
   );
 };
