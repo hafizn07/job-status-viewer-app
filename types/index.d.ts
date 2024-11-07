@@ -5,3 +5,5 @@ declare type PrintJob = {
   name: string;
   status: JobStatus;
 };
+
+declare type Role = "Admin" | "Technician" | null;

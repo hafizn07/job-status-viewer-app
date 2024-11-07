@@ -1,10 +1,9 @@
-import JobStatusViewer from "@/components/job-status-viewer";
+import AuthPage from "@/components/auth-page";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center dot-pattern-overlay">
-      {/* Pass either "Admin" or "Technician" as role */}
-      <JobStatusViewer role="Admin" />
+    <div className="min-h-screen flex items-center justify-center">
+      <AuthPage />
     </div>
   );
 }

@@ -19,7 +19,7 @@ export function getStatusCounts(jobs: PrintJob[]) {
 // Utility to filter jobs based on role and selected status
 export const getFilteredJobs = (
   jobs: PrintJob[],
-  role: "Admin" | "Technician",
+  role: "Admin" | "Technician" | null,
   status: JobStatus | "all"
 ) => {
   return jobs.filter((job) => {

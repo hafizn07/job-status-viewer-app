@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRole } from "@/contexts/role-context";
 
 interface StatusFilterSelectProps {
   value: JobStatus | "all";
@@ -16,6 +17,8 @@ interface StatusFilterSelectProps {
 }
 
 const SelectFilter = ({ value, onChange }: StatusFilterSelectProps) => {
+  const { role } = useRole();
+
   return (
     <div className="mb-4 flex items-center justify-center">
       <label className="mr-2">Filter by Status:</label>
@@ -30,9 +33,13 @@ const SelectFilter = ({ value, onChange }: StatusFilterSelectProps) => {
           <SelectGroup>
             <SelectLabel>Status</SelectLabel>
             <SelectItem value="all">All</SelectItem>
-            <SelectItem value="queued">Queued</SelectItem>
+            <SelectItem value="queued" disabled={role === "Technician"}>
+              Queued
+            </SelectItem>
             <SelectItem value="in-progress">In-Progress</SelectItem>
-            <SelectItem value="completed">Completed</SelectItem>
+            <SelectItem value="completed" disabled={role === "Technician"}>
+              Completed
+            </SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>

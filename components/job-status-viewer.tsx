@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRole } from "@/contexts/role-context";
 import printJobs from "@/data/printJobs.json";
 import DataTable from "./data-table";
 import StatusCards from "./status-card";
 import Header from "./header";
 import { getFilteredJobs, getStatusCounts } from "@/lib/utils";
 
-interface JobStatusViewerProps {
-  role: "Admin" | "Technician";
-}
-
-const JobStatusViewer = ({ role }: JobStatusViewerProps) => {
+const JobStatusViewer = () => {
+  const { role } = useRole();
   const [statusFilter, setStatusFilter] = useState<JobStatus | "all">("all");
 
   const filteredJobs = getFilteredJobs(printJobs as PrintJob[], role, statusFilter);
@@ -27,4 +25,3 @@ const JobStatusViewer = ({ role }: JobStatusViewerProps) => {
 };
 
 export default JobStatusViewer;
-
